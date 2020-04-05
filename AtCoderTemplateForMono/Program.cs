@@ -29,21 +29,21 @@ namespace AtCoderTemplateForMono.Questions
 
     public interface IAtCoderQuestion
     {
-        string Solve(string input);
-        string Solve(TextReader inputStream);
+        IEnumerable<string> Solve(string input);
+        IEnumerable<string> Solve(TextReader inputStream);
     }
 
     public abstract class AtCoderQuestionBase : IAtCoderQuestion
     {
-        public string Solve(string input)
+        public IEnumerable<string> Solve(string input)
         {
             var stream = new MemoryStream(Encoding.Unicode.GetBytes(input));
             var reader = new StreamReader(stream, Encoding.Unicode);
-            
+
             return Solve(reader);
         }
 
-        public abstract string Solve(TextReader inputStream);
+        public abstract IEnumerable<string> Solve(TextReader inputStream);
     }
 
     #endregion
